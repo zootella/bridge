@@ -8,9 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import pipe.main.Main;
-
-
 import base.exception.MessageException;
 import base.size.Stripe;
 import base.size.StripePattern;

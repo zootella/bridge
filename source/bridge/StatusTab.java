@@ -1,4 +1,4 @@
-package status.user;
+package bridge;
 
 
 import java.awt.event.ActionEvent;
@@ -9,10 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import pipe.main.Snippet;
-
-
 
 import base.exception.Mistake;
 import base.user.Cell;

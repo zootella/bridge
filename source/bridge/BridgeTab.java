@@ -1,4 +1,4 @@
-package bridge.user;
+package bridge;
 
 import java.awt.event.ActionEvent;
 
@@ -19,7 +19,6 @@ import base.state.Update;
 import base.user.Cell;
 import base.user.Panel;
 import base.user.TextMenu;
-import bridge.Bridge;
 
 public class BridgeTab extends Close {
 	

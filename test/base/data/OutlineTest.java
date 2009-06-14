@@ -4,9 +4,6 @@ package base.data;
 
 import org.junit.Test;
 
-import pipe.main.Main;
-
-
 import base.data.Data;
 import base.data.Outline;
 import base.exception.MessageException;

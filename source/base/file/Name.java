@@ -1,10 +1,10 @@
 package base.file;
 
-import pipe.main.Main;
 import base.data.Data;
 import base.data.Text;
 import base.data.TextSplit;
 import base.web.Url;
+import bridge.Main;
 
 /** A file name and extension, like "name.ext". */
 public class Name {
@@ -102,8 +102,8 @@ public class Name {
 
 	// -------- Make a new Name for a temporary file --------
 
-	/** Make a new Name like "Hello ryio3tz5.db" that won't conflict with files already in a folder. */
+	/** Make a new Name like "ryio3tz5.db" that won't conflict with files already in a folder. */
 	public static Name unique() {
-		return new Name(Main.name + " " + Text.start(Data.random(8).base32(), 8), "db");
+		return new Name(Text.start(Data.random(8).base32(), 8), "db");
 	}
 }
