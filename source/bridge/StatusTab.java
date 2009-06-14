@@ -11,11 +11,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import base.exception.Mistake;
+import base.state.Close;
 import base.user.Cell;
 import base.user.Panel;
 import base.user.TextMenu;
 
-public class StatusTab {
+public class StatusTab extends Close {
 
 	// -------- The Status tab, and its parts --------
 
@@ -114,4 +115,9 @@ public class StatusTab {
         output.append(s + "\n"); // Add the given text and a newline to the end of what's already in the output box
         output.setCaretPosition(output.getDocument().getLength()); // Scroll to the bottom
     }
+
+	@Override public void close() {
+		if (already()) return;
+		
+	}
 }

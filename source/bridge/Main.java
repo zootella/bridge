@@ -2,21 +2,30 @@ package bridge;
 
 import javax.swing.SwingUtilities;
 
+import base.exception.Mistake;
+
 public class Main {
+	
+	// Define
+	
+	/** The name of this program. */
+	public static final String name = "Bridge";
+	/** Text that describes the version of this program. */
+	public static final String version = "2009 June 14";
+	
+	// Main
 
 	// When the program runs, Java calls this main() method
     public static void main(String[] args) {
+    	SwingUtilities.invokeLater(new Runnable() { // Have the normal Swing thread call this run() method
+        	public void run() {
+        		try {
+        			
+        			// Start the program
+        			new Program();
 
-    	// Have the normal Swing thread call this run() method
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-
-            	// Make the Program object which represents the whole program, and save it
-            	program = new Program();
+        		} catch (Exception e) { Mistake.grab(e); } // Exception starting up
             }
         });
     }
-
-    /** The Program object that represents the whole program. */
-    public static Program program;
 }
