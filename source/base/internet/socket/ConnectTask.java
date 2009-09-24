@@ -50,6 +50,7 @@ public class ConnectTask extends TaskClose {
 			if (e == null) {      // No exception, save what thread() did
 				
 				socket = taskSocket;
+				System.out.println("little bridge connected to " + socket.ipPort.toString());
 			}
 			close();       // We're done
 			update.send(); // Tell update we've changed

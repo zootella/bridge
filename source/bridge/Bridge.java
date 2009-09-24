@@ -20,7 +20,8 @@ public class Bridge extends Close {
 	
 	// Parts
 	
-	public Bridge(Update up) {
+	public Bridge(BridgeTab tab, Update up) {
+		this.tab = tab;
 		this.up = up;
 		
 		uploadBin = Bin.medium();
@@ -32,6 +33,8 @@ public class Bridge extends Close {
 		update.send();
 	}
 
+	private final BridgeTab tab;
+	
 	private Port port;
 	private IpPort ipPort;
 	
@@ -114,6 +117,7 @@ public class Bridge extends Close {
 						connect = new ConnectTask(update, ipPort);
 					if (no(socket) && done(connect)) {
 						socket = connect.result();
+						tab.report("Connected to " + socket.ipPort.toString());
 						up.send();
 					}
 				}

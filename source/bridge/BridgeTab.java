@@ -42,7 +42,7 @@ public class BridgeTab extends Close {
 		} catch (MessageException e) { throw new CodeException(); }
 		
 		update = new Update(new MyReceive());
-		bridge = new Bridge(update);
+		bridge = new Bridge(this, update);
 
 		// Make the output text area
 		output = new JTextArea();
@@ -51,8 +51,9 @@ public class BridgeTab extends Close {
 		JScrollPane scroll = new JScrollPane(output, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		// Make the command text box
-		command = new JTextField();
+		command = new JTextArea();
 		new TextMenu(command); // Give it a right-click menu of clipboard commands
+		JScrollPane scroll2 = new JScrollPane(command, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		serverAction = new ServerAction();
 		connectAction = new ConnectAction();
@@ -66,7 +67,7 @@ public class BridgeTab extends Close {
 		panel.border();
 		panel.place(0, 0, 2, 1, 0, 0, 0, 0, Cell.wrap(bar.jpanel));
 		panel.place(0, 1, 2, 1, 1, 0, 1, 0, Cell.wrap(scroll).fill());
-		panel.place(0, 2, 1, 1, 0, 0, 0, 0, Cell.wrap(command).fillWide());
+		panel.place(0, 2, 1, 1, 0, 0, 0, 0, Cell.wrap(scroll2).fill());
 		panel.place(1, 2, 1, 1, 0, 1, 0, 0, Cell.wrap(new JButton(new SendAction())));
 	}
 
@@ -77,7 +78,7 @@ public class BridgeTab extends Close {
 	/** The large text box in the center that prints the program's output. */
 	private JTextArea output;
 	/** The single-line text box at the bottom where the user can type a command. */
-	private JTextField command;
+	private JTextArea command;
 
 	
 	@Override public void close() {
@@ -151,7 +152,7 @@ public class BridgeTab extends Close {
 	// Report
 
     /** Print a line of text onto the Status tab. */
-    private void report(String s) {
+    public void report(String s) {
         output.append(s + "\n"); // Add the given text and a newline to the end of what's already in the output box
         output.setCaretPosition(output.getDocument().getLength()); // Scroll to the bottom
     }
